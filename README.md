@@ -19,6 +19,8 @@ A small change
 
 Esto es una introducción a rebase.
 
+Esta es la presentación de la comunidad de dot net. Un saludo Pinedax.
+
 You can view a live demo over at https://react-redux.realworld.io/
 
 To get the frontend running locally:
