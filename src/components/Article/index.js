@@ -48,7 +48,6 @@ class Article extends React.Component {
           <div className="container">
 
             <h1>{this.props.article.title}</h1>
-            {articleImage && <img src={articleImage} alt={this.props.article.title} />}
             <ArticleMeta
               article={this.props.article}
               canModify={canModify} />
@@ -60,7 +59,14 @@ class Article extends React.Component {
 
           <div className="row article-content">
             <div className="col-xs-12">
-
+              {articleImage && (
+                <img
+                  className="article-image"
+                  width="300"
+                  src={articleImage}
+                  alt={this.props.article.title}
+                />
+              )}
               <div dangerouslySetInnerHTML={markup}></div>
 
               <ul className="tag-list">
