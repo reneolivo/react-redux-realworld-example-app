@@ -37,6 +37,7 @@ class Editor extends React.Component {
     const updateFieldEvent =
       key => ev => this.props.onUpdateField(key, ev.target.value);
     this.changeTitle = updateFieldEvent('title');
+    this.changeImage = updateFieldEvent('image');
     this.changeDescription = updateFieldEvent('description');
     this.changeBody = updateFieldEvent('body');
     this.changeTagInput = updateFieldEvent('tagInput');
@@ -57,7 +58,7 @@ class Editor extends React.Component {
       const article = {
         title: this.props.title,
         description: this.props.description,
-        body: this.props.body,
+        body: `${this.props.body}===========${this.props.image}`,
         tagList: this.props.tagList
       };
 
@@ -110,6 +111,15 @@ class Editor extends React.Component {
                       placeholder="Article Title"
                       value={this.props.title}
                       onChange={this.changeTitle} />
+                  </fieldset>
+
+                  <fieldset className="form-group">
+                    <input
+                      className="form-control form-control"
+                      type="text"
+                      placeholder="Article Image (URL)"
+                      value={this.props.image}
+                      onChange={this.changeImage} />
                   </fieldset>
 
                   <fieldset className="form-group">
