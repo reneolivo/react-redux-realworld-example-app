@@ -23,6 +23,8 @@ const ArticlePreview = props => {
   const favoriteButtonClass = article.favorited ?
     FAVORITED_CLASS :
     NOT_FAVORITED_CLASS;
+  const bodyParts = article.body.split('===========');
+  const articleImage = bodyParts[1];
 
   const handleClick = ev => {
     ev.preventDefault();
@@ -57,8 +59,27 @@ const ArticlePreview = props => {
       </div>
 
       <Link to={`/article/${article.slug}`} className="preview-link">
-        <h1>{article.title}</h1>
-        <p>{article.description}</p>
+        <div class="row">
+          <div class="col-md-2">
+            {articleImage && (
+              <img
+                className="article-image img-fluid"
+                src={articleImage}
+                alt={article.title}
+              />
+            )}
+            {!articleImage && (
+              <img
+                className="article-image img-fluid"
+                src="https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg"
+              />
+            )}
+          </div>
+          <div class="col-md-10">
+            <h1>{article.title}</h1>
+            <p>{article.description}</p>
+          </div>
+        </div>
         <span>Read more...</span>
         <ul className="tag-list">
           {
