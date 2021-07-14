@@ -34,8 +34,11 @@ class Article extends React.Component {
     if (!this.props.article) {
       return null;
     }
+    const articleBodyParts = this.props.article.body.split('===========');
+    const articleBody = articleBodyParts[0];
+    const articleImage = articleBodyParts[1];
 
-    const markup = { __html: marked(this.props.article.body, { sanitize: true }) };
+    const markup = { __html: marked(articleBody, { sanitize: true }) };
     const canModify = this.props.currentUser &&
       this.props.currentUser.username === this.props.article.author.username;
     return (
@@ -56,7 +59,14 @@ class Article extends React.Component {
 
           <div className="row article-content">
             <div className="col-xs-12">
-
+              {articleImage && (
+                <img
+                  className="article-image"
+                  width="300"
+                  src={articleImage}
+                  alt={this.props.article.title}
+                />
+              )}
               <div dangerouslySetInnerHTML={markup}></div>
 
               <ul className="tag-list">
