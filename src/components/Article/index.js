@@ -59,14 +59,14 @@ class Article extends React.Component {
 
           <div className="row article-content">
             <div className="col-xs-12">
-              {articleImage && (
-                <img
-                  className="article-image"
-                  width="300"
-                  src={articleImage}
-                  alt={this.props.article.title}
-                />
-              )}
+                {articleImage && (
+                  <img
+                    className="article-image"
+                    width="300"
+                    src={articleImage}
+                    alt={this.props.article.title}
+                  />
+                )}
               <div dangerouslySetInnerHTML={markup}></div>
 
               <ul className="tag-list">
